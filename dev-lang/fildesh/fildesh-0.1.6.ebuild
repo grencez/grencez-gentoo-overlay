@@ -11,5 +11,11 @@ SRC_URI="https://github.com/fildesh/fildesh/archive/refs/tags/v${PV}.tar.gz -> $
 LICENSE="ISC"
 SLOT="0/0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="vim-syntax"
 
+src_install() {
+  cmake_src_install
+  if ! use vim-syntax; then
+    rm -r "${D}/share"
+  fi
+}
