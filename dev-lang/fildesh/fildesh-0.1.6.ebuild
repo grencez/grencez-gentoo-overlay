@@ -15,7 +15,9 @@ IUSE="vim-syntax"
 
 src_install() {
   cmake_src_install
+  rm "${ED}"/usr/lib*/fildesh/libfildeshcompat*
+  rm "${ED}"/usr/include/fildesh/fildesh_compat*
   if ! use vim-syntax; then
-    rm -r "${D}/share"
+    rm -r "${ED}/usr/share"
   fi
 }
